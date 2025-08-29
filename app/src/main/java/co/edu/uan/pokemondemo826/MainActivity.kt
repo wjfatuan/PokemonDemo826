@@ -25,22 +25,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.rbChamsey.setOnClickListener {
-            binding.ivPokemon.setImageResource(R.drawable.chamsey)
+            binding.ivPokemon.setImageResource(R.drawable.chansey)
         }
         binding.rbPikachu.setOnClickListener {
             binding.ivPokemon.setImageResource(R.drawable.pikachu)
         }
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pokemonNames)
+        val adapter = PokemonListAdapter(this, R.layout.list_pokemon, pokemonNames)
         binding.lvPokemon.adapter = adapter
         binding.lvPokemon.setOnItemClickListener { parent, view, position, id ->
             println("parent: $parent, view: $view, position: $position, id: $id")
-            val textView = view as TextView
-            if(textView.text.toString().lowercase() == "pikachu") {
-                binding.ivPokemon.setImageResource(R.drawable.pikachu)
-            }
-            else if (textView.text.toString().lowercase() == "chamsey") {
-                binding.ivPokemon.setImageResource(R.drawable.chamsey)
-            }
+            val id = resources.getIdentifier(pokemonNames[position].lowercase(), "drawable", packageName)
+            binding.ivPokemon.setImageResource(id)
         }
     }
 }
