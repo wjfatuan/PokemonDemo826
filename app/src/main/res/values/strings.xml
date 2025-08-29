@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PokemonDemo826</string>
+    <array name="pokemon_names">
+        <item>Pikachu</item>
+        <item>Chamsey</item>
+    </array>
 </resources>
