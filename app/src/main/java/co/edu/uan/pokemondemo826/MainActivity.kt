@@ -11,6 +11,7 @@ import co.edu.uan.pokemondemo826.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    val pokemonNames = arrayOf("Pikachu", "Chamsey", "Bulbasaur", "Charmander", "Squirtle")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         binding.rbPikachu.setOnClickListener {
             binding.ivPokemon.setImageResource(R.drawable.pikachu)
         }
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pokemonNames)
+        binding.lvPokemon.adapter = adapter
         binding.lvPokemon.setOnItemClickListener { parent, view, position, id ->
             println("parent: $parent, view: $view, position: $position, id: $id")
             val textView = view as TextView
